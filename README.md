@@ -5,7 +5,7 @@
  
 ## Disclaimer:
 This tool violates the game's terms of service. It's for personal use and educational purposes only. Use at your own risk.
-It's not designed to purchase items, and it's highly unlikely to do so. However, use it at your own risk. The author (TM203) is not responsible for any unintended consequences or damages arising from the use of this software.
+It's not designed to purchase items, and it's highly unlikely to do so. However, use it at your own risk. The author (Timber Wood) is not responsible for any unintended consequences or damages arising from the use of this software.
 This tool.
 
 
