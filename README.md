@@ -33,6 +33,11 @@ And this tool will simulate key presses (To change menus in game) without asking
 Done and enjoy! Please note, there is a possibility of being banned while using this tool. Use responsibly.
 
 
+**Where to start**
+Go to the main festival
+![Start]([Image URL](https://github.com/TM203/Forza-5-AH-Sniper-js/blob/main/Images/MainAH.png))
+
+![Next]([Image URL](https://github.com/TM203/Forza-5-AH-Sniper-js/blob/main/Images/MainAH.png))
 
 
 
