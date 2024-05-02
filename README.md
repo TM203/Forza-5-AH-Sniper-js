@@ -35,9 +35,10 @@ Done and enjoy! Please note, there is a possibility of being banned while using 
 
 **Where to start**
 Go to the main festival
-![Start]([Image URL](https://github.com/TM203/Forza-5-AH-Sniper-js/blob/main/Images/MainAH.png))
+![Start](https://github.com/TM203/Forza-5-AH-Sniper-js/blob/main/Images/MainAH.png)
 
-![Next]([Image URL](https://github.com/TM203/Forza-5-AH-Sniper-js/blob/main/Images/MainAH.png))
+
+![Next](https://github.com/TM203/Forza-5-AH-Sniper-js/blob/main/Images/MainAH.png)
 
 
 
