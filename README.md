@@ -2,6 +2,8 @@
 **Only Tested on 1080p Monitor**
 
  Forza AH Sniper  This JavaScript tool automates bidding in the Forza Horizon 5 auction house. Originally created for personal enjoyment and was curious if it could be done with js. Eliminates manual button pressing, it simplifies the process of acquiring cars.
+This tool automatically buys out any car in the first slot. While it may occasionally fail to purchase a car or stop working over time, updates with bug fixes and improvements will be provided.
+
  
 ## Disclaimer:
 This tool violates the game's terms of service. It's for personal use and educational purposes only. Use at your own risk.
