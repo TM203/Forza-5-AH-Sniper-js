@@ -33,12 +33,15 @@ And this tool will simulate key presses (To change menus in game) without asking
 Done and enjoy! Please note, there is a possibility of being banned while using this tool. Use responsibly.
 
 
-**Where to start**
+## Where to start in game**
 Go to the main festival
 ![Start](https://github.com/TM203/Forza-5-AH-Sniper-js/blob/main/Images/MainAH.png)
 
 
-![Next](https://github.com/TM203/Forza-5-AH-Sniper-js/blob/main/Images/MainAH.png)
+Set the Search
+![Next](https://github.com/TM203/Forza-5-AH-Sniper-js/blob/main/Images/SetSearch.png)
+
+Start The batFile
 
 
 
