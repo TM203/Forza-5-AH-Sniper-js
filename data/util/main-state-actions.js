@@ -1,4 +1,4 @@
-
+const {loadImage} = require('canvas');
 const {compareImages} = require("./compare-Images")
 const {captureScreenshot} = require("./capture-screenshot")
 const fs = require("fs");
