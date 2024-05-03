@@ -1,0 +1,13 @@
+
+# amount of max times to buy cars each time 
+AmountOFCars: 0
+
+# This is how often to check game state don't change unless you know what you're doing
+UpdateINT: 700
+
+
+#Capture images for money
+UnpdateImagesMoney: true
+#In sec how many times to check your money
+MoneyTime: 300
+
