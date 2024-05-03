@@ -8,7 +8,7 @@ const {compareImages} = require("./util/compare-Images")
 const {captureScreenshot} = require("./util/capture-screenshot")
 const {performActions} = require("./util/main-state-actions")
 const {CaputeMoneyAmount} = require("./util/capture-money");
-const {tableFunc} = require("./util/table");
+
 
 const settings = SettingsYML()
 
@@ -21,8 +21,8 @@ if(settings?.UnpdateImagesMoney) {
 }
 
 
-let carsAmount = settings?.AmountOFCars || 0;
-let carsCount = 0;
+
+
 
 
 function sleep(ms) {
@@ -34,11 +34,7 @@ function sleep(ms) {
 async function main() {
     const referenceImages = await loadReferenceImages();
     while (true) {
-        if (carsCount >= carsAmount && carsAmount !== 0) {
-            process.exit();
-        }
 
-        tableFunc({carsAmount, carsCount})
 
         await captureScreenshot('./ImageData/screenshot.png',700, 200, 200, 200);
         const screenshotData = fs.readFileSync('./ImageData/screenshot.png');
@@ -52,7 +48,7 @@ async function main() {
                 threshold = 20000;
             }
             if (diffPixels < threshold) {
-                await performActions(state);
+                await performActions(state, settings?.AmountOFCars || 0);
             }
         }
 

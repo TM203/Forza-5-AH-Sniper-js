@@ -1,14 +1,23 @@
 const {loadImage} = require('canvas');
 const {compareImages} = require("./compare-Images")
 const {captureScreenshot} = require("./capture-screenshot")
+const {tableFunc} = require("./table");
 const fs = require("fs");
 const ks = require('node-key-sender');
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+let carsCount = 0;
 
-async function performActions(state) {
+async function performActions(state, carsAmount) {
+    
+    if (carsCount >= carsAmount && carsAmount !== 0) {
+        process.exit();
+    }
+
+    tableFunc({carsAmount, carsCount})
+
     switch (state) {
         case 'carAvalible':
             await sleep(1400);
