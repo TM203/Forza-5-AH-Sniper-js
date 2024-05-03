@@ -20,8 +20,9 @@ const formatNumber = (number) => {
 
 let data = {
     carsCount: 0,
-    carsAmount: 0,
-    moneyAmount: 0
+    carsAmountMax: 0,
+    moneyAmount: 0,
+    moneyAmountMax: 0
 }
 
 const tableFunc = (NewData) => {
@@ -33,7 +34,7 @@ const tableFunc = (NewData) => {
         for(const key in data) {
             table.push([key, formatNumber(data[key])]);
         }
-    
+    console.clear();
     console.log(table.toString());
 };
 

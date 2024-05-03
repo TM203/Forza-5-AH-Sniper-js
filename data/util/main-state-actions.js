@@ -10,13 +10,13 @@ function sleep(ms) {
 }
 let carsCount = 0;
 
-async function performActions(state, carsAmount) {
+async function performActions(state, carsAmountMax) {
     
-    if (carsCount >= carsAmount && carsAmount !== 0) {
+    if (carsCount >= carsAmountMax && carsAmountMax !== 0) {
         process.exit();
     }
 
-    tableFunc({carsAmount, carsCount})
+    tableFunc({carsAmountMax, carsCount})
 
     switch (state) {
         case 'carAvalible':

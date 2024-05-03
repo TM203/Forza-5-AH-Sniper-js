@@ -30,6 +30,15 @@ async function CaputeMoneyAmount(Time) {
         let match = result.data.text.match(/\d+/g);
 
         if(match) {
+
+            //if money limit hit, quit 
+            //did you know 90% of gamblers quit just before they hit it big?
+            console.log(settings?.Moneylimits?.Limitmoney, Number(match.join('')), settings?.Moneylimits?.MoneyLimit)
+
+            if (settings?.Moneylimits?.Limitmoney && Number(match.join('')) < settings?.Moneylimits?.MoneyLimit) {
+               process.exit();
+            }
+            
             tableFunc({moneyAmount: Number(match.join(''))})
         }
 

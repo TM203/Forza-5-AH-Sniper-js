@@ -2,7 +2,7 @@
 # Amount of cars to buy (resets on lunch) 0 = no limit
 AmountOFCars: 0
 
-# This is how often to check game state don't change unless you know what you're doing
+#This is how often to check game state don't change unless you know what you're doing
 UpdateINT: 600
 
 #Display 1080p Min Only
@@ -13,4 +13,9 @@ Display: 1
 UnpdateImagesMoney: true
 #In sec how many times to check your money
 MoneyTime: 300
+#When you hit lower then $1k quit buying cars
+#This might not be 100% accurate
+Moneylimits: 
+  Limitmoney: false
+  MoneyLimit: 1000
 

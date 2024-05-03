@@ -9,18 +9,12 @@ const {captureScreenshot} = require("./util/capture-screenshot")
 const {performActions} = require("./util/main-state-actions")
 const {CaputeMoneyAmount} = require("./util/capture-money");
 const {tableFunc} = require("./util/table");
-
 const settings = SettingsYML()
-
-
-
 
 
 if(settings?.UnpdateImagesMoney) {
     CaputeMoneyAmount(settings?.MoneyTime || 300)
 }
-
-
 
 
 
@@ -33,9 +27,16 @@ function sleep(ms) {
 
 async function main() {
     const referenceImages = await loadReferenceImages();
+
     while (true) {
 
-        tableFunc()
+        tableFunc({
+            moneyAmountMax:settings?.Moneylimits?.Limitmoney ?  
+            settings?.Moneylimits?.MoneyLimit || 
+            0 : 0
+        }
+        )
+
         await captureScreenshot('./ImageData/screenshot.png',700, 200, 200, 200);
         const screenshotData = fs.readFileSync('./ImageData/screenshot.png');
         for (const state in referenceImages) {
@@ -56,7 +57,8 @@ async function main() {
         const diffPixels = await compareImages(fs.readFileSync('./ImageData/screenshot.png'), await loadImage('./ImageData/Gamertagup.png'));
         const threshold = 10000;
         Tesseract.recognize('./ImageData/screenshot.png').then( async function(result) {
-            if(result?.data?.text.includes("NO")) {
+            const wordRegex = /(?:no|on|in)/i;
+            if(wordRegex.test(result?.data?.text)) {
                 ks.sendKey('escape');
             } else if (diffPixels < threshold) {
                 ks.sendKey('escape');

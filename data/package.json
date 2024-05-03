@@ -1,14 +1,36 @@
 {
+  
   "dependencies": {
-    "canvas": "^2.11.2",
-    "cli-table3": "^0.6.4",
-    "init": "^0.1.2",
-    "js-yaml": "^4.1.0",
-    "nexe": "^4.0.0-rc.6",
-    "node-key-sender": "^1.0.11",
-    "pixelmatch": "^5.3.0",
-    "screenshot-desktop": "^1.15.0",
-    "sharp": "^0.33.3",
-    "tesseract.js": "^5.0.5"
+  
+    
+  "canvas": "^2.11.2",
+  
+    
+  "cli-table3": "^0.6.4",
+  
+    
+  "init": "^0.1.2",
+  
+    
+  "js-yaml": "^4.1.0",
+  
+    
+  "nexe": "^4.0.0-rc.6",
+  
+    
+  "node-key-sender": "^1.0.11",
+  
+    
+  "pixelmatch": "^5.3.0",
+  
+    
+  "screenshot-desktop": "^1.15.0",
+  
+    
+  "sharp": "^0.33.3",
+  
+    
+  "tesseract.js": "^5.0.5"
+  
   }
 }
