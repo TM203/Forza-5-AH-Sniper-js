@@ -2,6 +2,7 @@
 const {compareImages} = require("./compare-Images")
 const {captureScreenshot} = require("./capture-screenshot")
 const fs = require("fs");
+const ks = require('node-key-sender');
 
 async function performActions(state) {
     switch (state) {
