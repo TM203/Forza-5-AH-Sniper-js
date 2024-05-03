@@ -1,6 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+data/ImageData/screenshotMoney.png
+data/ImageData/screenshot.png
 data/node_modules/
 node_modules/
 
