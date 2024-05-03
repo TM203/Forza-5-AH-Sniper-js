@@ -8,7 +8,7 @@ const {compareImages} = require("./util/compare-Images")
 const {captureScreenshot} = require("./util/capture-screenshot")
 const {performActions} = require("./util/main-state-actions")
 const {CaputeMoneyAmount} = require("./util/capture-money");
-
+const {tableFunc} = require("./util/table");
 
 const settings = SettingsYML()
 
@@ -35,7 +35,7 @@ async function main() {
     const referenceImages = await loadReferenceImages();
     while (true) {
 
-
+        tableFunc()
         await captureScreenshot('./ImageData/screenshot.png',700, 200, 200, 200);
         const screenshotData = fs.readFileSync('./ImageData/screenshot.png');
         for (const state in referenceImages) {

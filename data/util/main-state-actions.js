@@ -31,7 +31,7 @@ async function performActions(state, carsAmount) {
             await sleep(4000);
             await captureScreenshot('./ImageData/screenshot.png',800, 400, 400, 200);
             const diffPixels = await compareImages(fs.readFileSync('./ImageData/screenshot.png'), await loadImage('./ImageData/Failed.png'));
-            const threshold = 29933;
+            const threshold = 25933; //29900
             if (diffPixels < threshold) {
                 await sleep(300);
                 ks.sendKey('enter');

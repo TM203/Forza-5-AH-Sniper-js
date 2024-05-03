@@ -1,9 +1,12 @@
 
-# amount of max times to buy cars each time 
+# Amount of cars to buy (resets on lunch) 0 = no limit
 AmountOFCars: 0
 
 # This is how often to check game state don't change unless you know what you're doing
-UpdateINT: 700
+UpdateINT: 600
+
+#Display 1080p Min Only
+Display: 1
 
 
 #Capture images for money
