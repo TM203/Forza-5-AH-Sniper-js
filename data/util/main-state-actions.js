@@ -4,6 +4,10 @@ const {captureScreenshot} = require("./capture-screenshot")
 const fs = require("fs");
 const ks = require('node-key-sender');
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function performActions(state) {
     switch (state) {
         case 'carAvalible':
