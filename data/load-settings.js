@@ -13,6 +13,7 @@ const SettingsYML = () => {
       }
 
         return settings
+
       } catch (e) {
         console.log(e);
       }

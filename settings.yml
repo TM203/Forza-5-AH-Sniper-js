@@ -3,7 +3,7 @@
 AmountOFCars: 0
 
 #This is how often to check game state don't change unless you know what you're doing
-UpdateINT: 1100
+UpdateINT: 1800
 
 #Display 1080p Min Only
 Display: 1

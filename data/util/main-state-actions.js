@@ -21,6 +21,7 @@ async function performActions(state, carsAmountMax, Delay=300) {
 
     switch (state) {
         case 'carAvalible':
+            console.log('wdihwdiohiodwghiodwghiohwdiowdhgoihgwe')
             await sleep(Delay);
             ks.sendKey('y');
             await sleep(400);
