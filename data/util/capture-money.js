@@ -22,7 +22,7 @@ async function CaputeMoneyAmount(Time) {
         
 
         const screenSize = await screenshot.listDisplays();
-        const screenWidth = screenSize[display].width - 200;
+        const screenWidth = screenSize[display].width - 700;
         await captureScreenshot('./ImageData/screenshotMoney.png', screenWidth, 0, 200, 100);
     
         const result = await Tesseract.recognize('./ImageData/screenshotMoney.png')
