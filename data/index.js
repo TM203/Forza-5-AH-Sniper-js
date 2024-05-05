@@ -41,13 +41,17 @@ async function main() {
         const screenshotData = fs.readFileSync('./ImageData/screenshot.png');
         for (const state in referenceImages) {
             const diffPixels = await compareImages(screenshotData, referenceImages[state]);
+
+            
             let threshold = 9000;
             if(state === 'carAvalible') {
-                threshold = 18000;
+                threshold = 17000;
             }
             if(state === 'Gamertagup') {
                 threshold = 20000;
             }
+
+            console.log(diffPixels, threshold, state)
             if (diffPixels < threshold) {
                 await performActions(state, settings?.AmountOFCars || 0);
             }
@@ -59,6 +63,7 @@ async function main() {
         Tesseract.recognize('./ImageData/screenshot.png').then( async function(result) {
             const wordRegex = /(?:no|on|in)/i;
             if(wordRegex.test(result?.data?.text)) {
+                console.log(result?.data?.text)
                 ks.sendKey('escape');
             } else if (diffPixels < threshold) {
                 ks.sendKey('escape');

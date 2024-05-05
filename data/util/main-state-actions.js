@@ -20,7 +20,7 @@ async function performActions(state, carsAmountMax) {
 
     switch (state) {
         case 'carAvalible':
-            await sleep(1000);
+            await sleep(900);
             ks.sendKey('y');
             await sleep(400);
             ks.sendKey('down');
@@ -59,7 +59,8 @@ async function performActions(state, carsAmountMax) {
             await sleep(400);
             ks.sendKey('enter');
             return true;
-        case 'Searching':
+        case 'MainMainMenu':
+            ks.sendKey('enter');
             return true;
     }
 }
