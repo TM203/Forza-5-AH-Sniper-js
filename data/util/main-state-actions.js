@@ -4,13 +4,14 @@ const {captureScreenshot} = require("./capture-screenshot")
 const {tableFunc} = require("./table");
 const fs = require("fs");
 const ks = require('node-key-sender');
+const Tesseract = require('tesseract.js');
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 let carsCount = 0;
 
-async function performActions(state, carsAmountMax) {
+async function performActions(state, carsAmountMax, Delay=300) {
     
     if (carsCount >= carsAmountMax && carsAmountMax !== 0) {
         process.exit();
@@ -20,7 +21,7 @@ async function performActions(state, carsAmountMax) {
 
     switch (state) {
         case 'carAvalible':
-            await sleep(900);
+            await sleep(Delay);
             ks.sendKey('y');
             await sleep(400);
             ks.sendKey('down');
@@ -28,6 +29,7 @@ async function performActions(state, carsAmountMax) {
             ks.sendKey('enter');
             await sleep(400);
             ks.sendKey('enter');
+
             await sleep(4000);
             await captureScreenshot('./ImageData/screenshot.png',800, 400, 400, 200);
             const diffPixels = await compareImages(fs.readFileSync('./ImageData/screenshot.png'), await loadImage('./ImageData/Failed.png'));
@@ -41,18 +43,28 @@ async function performActions(state, carsAmountMax) {
                 ks.sendKey('escape');
                 await sleep(300);
                 return;
-            }
-            await sleep(1000);
-            ks.sendKey('enter');
-            await sleep(1000);
-            ks.sendKey('enter');
-            await sleep(10000);
-            carsCount++;
-            ks.sendKey('enter');
-            await sleep(400);
-            ks.sendKey('escape');
-            await sleep(400);
-            ks.sendKey('escape');
+            } else if (
+                await Tesseract.recognize('./ImageData/screenshot.png').then( async function(result) {
+                    const wordRegex = /buyout\s*successful/i
+                    console.log(result?.data?.text)
+                    if(wordRegex.test(result?.data?.text)) {
+                        console.log('Car detected')
+                        await sleep(1000);
+                        ks.sendKey('enter');
+                        await sleep(1000);
+                        ks.sendKey('enter');
+                        await sleep(10000);
+                        carsCount++;
+                        ks.sendKey('enter');
+                        await sleep(400);
+                        ks.sendKey('escape');
+                        await sleep(400);
+                        ks.sendKey('escape');
+    
+                    }
+                })
+                
+            )
             return true;
         case 'mainMenu':
             ks.sendKey('enter');

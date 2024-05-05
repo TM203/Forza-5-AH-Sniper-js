@@ -5,7 +5,6 @@ async function loadReferenceImages() {
         mainMenu: await loadImage('./ImageData/mainMenu.png'),
         MainMainMenu: await loadImage('./ImageData/MainMainMenu.png'),
         carAvalible: await loadImage('./ImageData/carAvalible.png'),
-        empty: await loadImage('./ImageData/empty.png')
     };
     return referenceImages;
 }
