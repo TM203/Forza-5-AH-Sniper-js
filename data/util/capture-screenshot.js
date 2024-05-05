@@ -10,6 +10,9 @@ async function captureScreenshot(filename, x, y, width, height) {
 
     const screenWidth = screenSize[display].width;
     const screenHeight = screenSize[display].height;
+    console.log(screenHeight, screenWidth)
+
+
 
     const imgBuffer = await screenshot({ format: 'png', screen: 0, width: screenWidth, height: screenHeight });
 

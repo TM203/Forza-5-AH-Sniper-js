@@ -20,7 +20,7 @@ async function performActions(state, carsAmountMax) {
 
     switch (state) {
         case 'carAvalible':
-            await sleep(1400);
+            await sleep(1000);
             ks.sendKey('y');
             await sleep(400);
             ks.sendKey('down');
