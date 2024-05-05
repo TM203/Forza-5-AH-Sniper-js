@@ -45,7 +45,7 @@ async function main() {
             
             let threshold = 9000;
             if(state === 'carAvalible') {
-                threshold = 17000;
+                threshold = 18000;
             }
             if(state === 'Gamertagup') {
                 threshold = 20000;

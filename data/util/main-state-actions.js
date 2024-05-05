@@ -26,7 +26,7 @@ async function performActions(state, carsAmountMax) {
             ks.sendKey('down');
             await sleep(200);
             ks.sendKey('enter');
-            await sleep(300);
+            await sleep(400);
             ks.sendKey('enter');
             await sleep(4000);
             await captureScreenshot('./ImageData/screenshot.png',800, 400, 400, 200);
