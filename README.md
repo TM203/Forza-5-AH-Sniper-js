@@ -35,6 +35,7 @@ Done and enjoy! Please note, there is a possibility of being banned while using 
 
 ## Where to start in game
 This adjustment enhances the tool's ability to accurately interpret images, resulting in improved readability and performance.
+##Turn off Moving BackGrounds
 
 ![Settings](https://github.com/TM203/Forza-5-AH-Sniper-js/blob/main/Images/SettingChange.png)
 
