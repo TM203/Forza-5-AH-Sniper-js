@@ -1,5 +1,5 @@
 # Forza-Sniper-js
-**Only Tested on 1080p Monitor**
+**Only wroks on 1080p res**
 
  Forza AH Sniper  This JavaScript tool automates bidding in the Forza Horizon 5 auction house. Originally created for personal enjoyment and was curious if it could be done with js. Eliminates manual button pressing, it simplifies the process of acquiring cars.
 This tool automatically buys out any car in the first slot. While it may occasionally fail to purchase a car or stop working over time, updates with bug fixes and improvements will be provided.
@@ -28,12 +28,17 @@ And this tool will simulate key presses (To change menus in game) without asking
    
 3.  **Run the update bat** Navigate to the data folder in your project directory. There, you'll find a batch file named update-FistTime.bat. Running this script will automatically download the necessary npm packages for this project.
 
-4. **To start the Forza5AH.bat** Click on the tree icon located in the project's root directory. This will execute the Forza5AH.bat script.
+4. **To start the Forza5AH use the start.bat** Navigate to the data folder in your project directory. and run the start.bat
 
 Done and enjoy! Please note, there is a possibility of being banned while using this tool. Use responsibly.
 
 
-## Where to start in game**
+## Where to start in game
+This adjustment enhances the tool's ability to accurately interpret images, resulting in improved readability and performance.
+
+![Settings](https://github.com/TM203/Forza-5-AH-Sniper-js/blob/main/Images/SettingChange.png)
+
+
 Go to the main festival
 ![Start](https://github.com/TM203/Forza-5-AH-Sniper-js/blob/main/Images/MainAH.png)
 
