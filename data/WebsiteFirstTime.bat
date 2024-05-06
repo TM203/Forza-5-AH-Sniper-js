@@ -1,0 +1,2 @@
+cd ../website
+npm i

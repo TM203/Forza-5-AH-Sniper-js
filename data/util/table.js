@@ -1,10 +1,31 @@
 const Table = require('cli-table3');
 const fs = require('fs');
-
+const {SettingsYML} = require("../load-settings");
+const settings = SettingsYML()
+const filePath = './data/data.json';
 const table = new Table({
-    head: ['Checking', 'data'],
+    head: [`Version ${settings.versionNumber || 0}`, 'data'],
     colWidths: [15, 15]
 });
+
+const settingsUpdateInv = settings?.Website?.RunLocalWebsite ? (settings.Website.UpdateInv || 300) * 1000 : 100000
+
+const saveTableToJson = () => {
+    try {
+        // Convert the table data to JSON format
+        const jsonData = JSON.stringify(table, null, 2);
+
+        // Write the JSON data to a file, replacing the existing content
+        fs.writeFileSync(filePath, jsonData);
+
+        console.log('Table data saved to', filePath);
+    } catch (error) {
+        console.error('Error saving table data:', error);
+    }
+};
+
+setInterval(saveTableToJson, settingsUpdateInv);
+
 
 const formatNumber = (number) => {
     if(number >= 1000000000) {
@@ -34,9 +55,14 @@ const tableFunc = (NewData) => {
         for(const key in data) {
             table.push([key, formatNumber(data[key])]);
         }
-    //console.clear();
+    console.clear();
     console.log(table.toString());
+
+    
+
 };
+
+
 
 module.exports.tableFunc = tableFunc
 

@@ -1,5 +1,5 @@
 #Don't Change this
-versionNumber: 2.1
+versionNumber: 3
 
 
 # Amount of cars to buy (resets on lunch) 0 = no limit
@@ -27,5 +27,13 @@ Moneylimits:
 
 #Check When you change tabs to stop keyboard Input
 CheckGameSelected: true
+
+#run a local website to check your bal car count and more 
+#Make sure to run the website.bat for the first time to download all the dep
+#This page will be http not https
+Website:
+  RunLocalWebsite: false
+  #How often in sec to update the data on the website, setting this higher can use more resources
+  UpdateInv: 60
 
 
