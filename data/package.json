@@ -3,6 +3,9 @@
   "dependencies": {
   
     
+  "@yao-pkg/pkg": "^5.11.5",
+  
+    
   "canvas": "^2.11.2",
   
     

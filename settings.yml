@@ -1,3 +1,6 @@
+#Don't Change this
+versionNumber: 2.1
+
 
 # Amount of cars to buy (resets on lunch) 0 = no limit
 AmountOFCars: 0
@@ -10,7 +13,7 @@ Display: 1
 
 #Change in AH delay noticed when pressing the y menu button
 #Change this if you notice it's too slow at opening the buy menu or too fast
-Delay: 300
+Delay: 400
 
 #Capture images for money
 UnpdateImagesMoney: true
@@ -21,4 +24,8 @@ MoneyTime: 300
 Moneylimits: 
   Limitmoney: false
   MoneyLimit: 1000
+
+#Check When you change tabs to stop keyboard Input
+CheckGameSelected: true
+
 

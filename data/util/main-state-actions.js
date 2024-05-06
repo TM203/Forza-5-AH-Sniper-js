@@ -11,7 +11,7 @@ function sleep(ms) {
 }
 let carsCount = 0;
 
-async function performActions(state, carsAmountMax, Delay=300) {
+async function performActions(state, carsAmountMax, Delay=1000) {
     
     if (carsCount >= carsAmountMax && carsAmountMax !== 0) {
         process.exit();
@@ -21,12 +21,13 @@ async function performActions(state, carsAmountMax, Delay=300) {
 
     switch (state) {
         case 'carAvalible':
-            console.log('wdihwdiohiodwghiodwghiohwdiowdhgoihgwe')
+            console.log('---- CAR AVALIBLE ----')
             await sleep(Delay);
             ks.sendKey('y');
-            await sleep(400);
+            await sleep(300);
+            console.log('down')
             ks.sendKey('down');
-            await sleep(200);
+            await sleep(300);
             ks.sendKey('enter');
             await sleep(400);
             ks.sendKey('enter');
@@ -36,6 +37,7 @@ async function performActions(state, carsAmountMax, Delay=300) {
             const diffPixels = await compareImages(fs.readFileSync('./ImageData/screenshot.png'), await loadImage('./ImageData/Failed.png'));
             const threshold = 25933; //29900
             if (diffPixels < threshold) {
+                console.log('Failed')
                 await sleep(300);
                 ks.sendKey('enter');
                 await sleep(300);
@@ -43,30 +45,29 @@ async function performActions(state, carsAmountMax, Delay=300) {
                 await sleep(300);
                 ks.sendKey('escape');
                 await sleep(300);
-                return;
-            } else if (
-                await Tesseract.recognize('./ImageData/screenshot.png').then( async function(result) {
-                    const wordRegex = /buyout\s*successful/i
-                    console.log(result?.data?.text)
-                    if(wordRegex.test(result?.data?.text)) {
-                        console.log('Car detected')
-                        await sleep(1000);
-                        ks.sendKey('enter');
-                        await sleep(1000);
-                        ks.sendKey('enter');
-                        await sleep(10000);
-                        carsCount++;
-                        ks.sendKey('enter');
-                        await sleep(400);
-                        ks.sendKey('escape');
-                        await sleep(400);
-                        ks.sendKey('escape');
-    
-                    }
-                })
+                return true
+            } else {
+                const result = await Tesseract.recognize('./ImageData/screenshot.png')
+                const wordRegex = /buyout\s*successful/i
+                console.log(result?.data?.text)
+                if(wordRegex.test(result?.data?.text)) {
+                    console.log('Car detected')
+                    await sleep(1000);
+                    ks.sendKey('enter');
+                    await sleep(1000);
+                    ks.sendKey('enter');
+                    await sleep(10000);
+                    carsCount++;
+                    ks.sendKey('enter');
+                    await sleep(400);
+                    ks.sendKey('escape');
+                    await sleep(400);
+                    ks.sendKey('escape');
                 
-            )
-            return true;
+            }
+        }
+        return false;
+
         case 'mainMenu':
             ks.sendKey('enter');
             await sleep(400);

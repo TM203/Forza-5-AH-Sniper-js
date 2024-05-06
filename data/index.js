@@ -1,5 +1,4 @@
 const fs = require("fs");
-const {loadImage} = require('canvas');
 const ks = require('node-key-sender');
 const Tesseract = require('tesseract.js');
 const {SettingsYML} = require("./load-settings");
@@ -15,7 +14,9 @@ const options = {
     screenRecordingPermission: true // Enable screen recording permission check (macOS only)
 };
 
-
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 
 
@@ -28,15 +29,44 @@ if(settings?.UnpdateImagesMoney) {
     CaputeMoneyAmount(settings?.MoneyTime || 300)
 }
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+
+async function CheckStateAndCap(referenceImages) {
+    await captureScreenshot('./ImageData/screenshot.png',700, 300, 20, 20);
+    let carDetected = false;
+    const screenshotData = fs.readFileSync('./ImageData/screenshot.png');
+    for (const state in referenceImages) {
+        const diffPixels = await compareImages(screenshotData, referenceImages[state]);
+        
+
+        let threshold = 50;
+        if(state === 'carAvalible') {
+            
+            threshold = 50;
+        }
+        if(state === 'Gamertagup') {
+            threshold = 50;
+        }
+       
+        console.log(diffPixels, threshold, state)
+        if (diffPixels < threshold) {
+            
+            carDetected = true
+
+
+            const actionResult = await performActions(state, settings?.AmountOFCars || 0, settings?.Delay || 1000);
+
+            if (!actionResult) {
+                return true; // Return false if performActions returns true
+            }
+            
+
+        } else if(state === 'carAvalible' && !carDetected) {
+            ks.sendKey('escape');
+            return false
+        }
+        
+    }
 }
-
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 
 
 async function main() {
@@ -44,57 +74,50 @@ async function main() {
 
     const referenceImages = await loadReferenceImages();
     while (true) {
+        let continueLoop = false
 
-        import('get-windows').then(({ activeWindow }) => {
-            activeWindow(options)
-                .then( async (result) => {
-                    console.log(result.title)
-                    if( result.title === 'Forza Horizon 5') {
-                        await captureScreenshot('./ImageData/screenshot.png',700, 300, 20, 20);
-                        let carDetected = false;
-                        const screenshotData = fs.readFileSync('./ImageData/screenshot.png');
-                        for (const state in referenceImages) {
-                            const diffPixels = await compareImages(screenshotData, referenceImages[state]);
-                
-                            
-                            let threshold = 100;
-                            if(state === 'carAvalible') {
-                                
-                                threshold = 50;
-                            }
-                            if(state === 'Gamertagup') {
-                                threshold = 100;
-                            }
-                            console.log(diffPixels, threshold, state)
-                            
-                            if (diffPixels < threshold) {
-                                carDetected = true
-                                
-                                await performActions(state, settings?.AmountOFCars || 0, settings?.Delay || 300);
-                            } else if(state === 'carAvalible' && !carDetected) {
-                                console.log('Bevan Sucks')
-                                ks.sendKey('escape');
-                            }
+        if(settings?.CheckGameSelected) {
+            import('get-windows').then(({ activeWindow }) => {
+                activeWindow(options)
+                    .then( async (result) => {
+                        
+                        if( result.title === 'Forza Horizon 5') {
+                            continueLoop = await CheckStateAndCap(referenceImages)
                         }
-                    }
+    
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        } else {
+            continueLoop = await CheckStateAndCap(referenceImages)
+        }
 
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        }).catch(error => {
-            console.error('Error:', error);
-        });
+
 
         tableFunc({
             moneyAmountMax:settings?.Moneylimits?.Limitmoney ?  
             settings?.Moneylimits?.MoneyLimit || 
             0 : 0
         }
+
+
         )
 
+        if (continueLoop) {
+            await sleep(10000); // Pause the loop for 30 secondscontinueLoop
+            continueLoop = true
+        } else {
+            tableFunc({
+                moneyAmountMax: settings?.Moneylimits?.Limitmoney ? settings?.Moneylimits?.MoneyLimit || 0 : 0
+            });
 
-        await new Promise(resolve => setTimeout(resolve, settings?.UpdateINT || 700));
+            await sleep(settings?.UpdateINT || 700); // Pause for the specified update interval
+        }
+        
     }
 }
 

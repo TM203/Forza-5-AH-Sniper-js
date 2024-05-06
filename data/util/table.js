@@ -34,7 +34,7 @@ const tableFunc = (NewData) => {
         for(const key in data) {
             table.push([key, formatNumber(data[key])]);
         }
-    console.clear();
+    //console.clear();
     console.log(table.toString());
 };
 
