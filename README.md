@@ -10,7 +10,7 @@ This tool violates the game's terms of service. It's for personal use and educat
 It's not designed to purchase items, and it's highly unlikely to do so. However, use it at your own risk. Im not responsible for any unintended consequences or damages arising from the use of this software.
 This tool.
 
-## Enable your own local website website
+## Enable your own local website
 
 ![Website](https://github.com/TM203/Forza-5-AH-Sniper-js/blob/main/Images/Website.png)
 
